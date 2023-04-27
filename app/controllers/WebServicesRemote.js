@@ -23,6 +23,7 @@ export const getPedidoProveedor = async (req, res) => {
         "       T0.DATO5,\n" +
         "       T0.FACTURA,\n" +
         "       T0.FACTURA_FAB,\n" +
+        "       T0.BULTOS,\n" +
         "       T0.VAL1,\n" +
         "       T0.VAL2,\n" +
         "       T0.PESO\n" +

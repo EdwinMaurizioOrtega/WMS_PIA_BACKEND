@@ -1,11 +1,12 @@
 import { Request} from 'tedious';
 import ConnectionPool from "tedious-connection-pool2";
 
-// Avoiding concurrent SQL SERVER calls
+// Configuración de la piscina de conexiones
 const poolConfig = {
-    min: 1,
-    max: 1,
-    log: true
+    min: 1, // tamaño mínimo de la piscina
+    max: 1, // tamaño máximo de la piscina
+    idleTimeoutMillis: 30000, // tiempo de espera para conexiones inactivas
+    log: true // activar registros de depuración
 };
 
 // Edit this config
