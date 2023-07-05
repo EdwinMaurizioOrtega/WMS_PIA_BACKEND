@@ -106,6 +106,7 @@ export const getRangoFechaCreacionPedidoProveedor = async (req, res) => {
     // FECHA DE CREACIÓN PEDIDO (FECHA ALTA)
     const fec_inicio = req.query.fec_inicio; //7001
     const fec_fin = req.query.fec_fin; //7001
+    const procedencia = req.query.proced; //7001
 
     const params = [];
     const sql = "SELECT T0.PEDIDO_PROV,\n" +
@@ -130,7 +131,7 @@ export const getRangoFechaCreacionPedidoProveedor = async (req, res) => {
         "         INNER JOIN dbo.TC_SOCIO_NEGOCIO T1 on T1.SOCIO = T0.SOCIO\n" +
         "         INNER JOIN dbo.TC_CR_PEDIDO_PROV_TIPO T2 ON T2.PEDIDO_PROV_TIPO = T0.PEDIDO_PROV_TIPO\n" +
         "         INNER JOIN dbo.TC_CR_PEDIDO_PROV_TIPO T3 ON T3.PEDIDO_PROV_TIPO = T0.PEDIDO_PROV_TIPO\n" +
-        "WHERE T0.FEC_ALTA BETWEEN CAST('"+fec_inicio+" 00:00:00' AS datetime )  AND  CAST('"+fec_fin+" 23:59:59' AS datetime)";
+        "WHERE T0.PROCEDENCIA = "+procedencia+" AND T0.FEC_ALTA BETWEEN CAST('"+fec_inicio+" 00:00:00' AS datetime )  AND  CAST('"+fec_fin+" 23:59:59' AS datetime)";
     // For each param do: db.buildParams(params, "name", TYPES.type, variable)
     //myObject.buildParams(params, "number", TYPES.Int, number);
     myObject.query(params, sql, result => {
@@ -148,6 +149,8 @@ export const getRangoFechaLlegadaPedidoProveedorBodega = async (req, res) => {
 
     const fec_inicio = req.query.fec_inicio; //7001
     const fec_fin = req.query.fec_fin; //7001
+    const procedencia = req.query.proced; //7001
+
 
     const params = [];
     const sql = "SELECT T0.PEDIDO_PROV,\n" +
@@ -172,7 +175,7 @@ export const getRangoFechaLlegadaPedidoProveedorBodega = async (req, res) => {
         "         INNER JOIN dbo.TC_SOCIO_NEGOCIO T1 on T1.SOCIO = T0.SOCIO\n" +
         "         INNER JOIN dbo.TC_CR_PEDIDO_PROV_TIPO T2 ON T2.PEDIDO_PROV_TIPO = T0.PEDIDO_PROV_TIPO\n" +
         "         INNER JOIN dbo.TC_CR_PEDIDO_PROV_TIPO T3 ON T3.PEDIDO_PROV_TIPO = T0.PEDIDO_PROV_TIPO\n" +
-        "WHERE T0.FEC_INGRESO BETWEEN CAST('"+fec_inicio+" 00:00:00' AS datetime )  AND  CAST('"+fec_fin+" 23:59:59' AS datetime)";
+        "WHERE T0.PROCEDENCIA = "+procedencia+" AND T0.FEC_INGRESO BETWEEN CAST('"+fec_inicio+" 00:00:00' AS datetime )  AND  CAST('"+fec_fin+" 23:59:59' AS datetime)";
     // For each param do: db.buildParams(params, "name", TYPES.type, variable)
     //myObject.buildParams(params, "number", TYPES.Int, number);
     myObject.query(params, sql, result => {
