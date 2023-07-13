@@ -11,7 +11,7 @@ import {
     getRangoFechaLlegadaPedidoProveedorBodega,
     getCantidadDetallePedidoProveedor,
     getDespachoPedidoProveedor,
-    getDespachoDetallePedidoProveedor
+    getDespachoDetallePedidoProveedor, getPedidoProveedorFiltroFechas
 
 } from '../controllers/WebServicesRemote.js';
 import { IniciarSesion } from '../controllers/user.js'
@@ -26,6 +26,7 @@ router.get('/lista_imagenes', getListImageByProveedorAndProcedencia);
 
 //Reporteria WMS - PIA
 router.get('/reporte_pedido_proveedor', getPedidoProveedor);
+router.get('/reporte_pedido_proveedor_filtro_fecha', getPedidoProveedorFiltroFechas);
 router.get('/reporte_detalle_pedido_proveedor', getDetallePedidoProveedor);
 router.get('/reporte_cantidad_detalle_pedido_proveedor', getCantidadDetallePedidoProveedor);
 
